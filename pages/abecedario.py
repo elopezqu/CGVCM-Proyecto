@@ -22,7 +22,7 @@ class SenhaWindow(tk.Toplevel):
         
         # Cargar imagen
         try:
-            imagen = Image.open(f"alfabeto.jpg")
+            imagen = Image.open(f"assets/games/alfabeto.jpg")
             #imagen = Image.new('RGB', (400, 400), color='#008B8B')
             img_tk = ImageTk.PhotoImage(imagen)
             

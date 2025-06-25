@@ -1,18 +1,16 @@
 import tkinter as tk
 from tkinter import ttk
 
-class ListaSenasWindow(tk.Toplevel):
-    def __init__(self, master):
-        super().__init__(master)
-        self.master = master  # Referencia a la ventana principal
-        self.title("Lista de Señas - EnSEÑA PLAY")
-        self.geometry("900x600")
-        self.minsize(800, 500)
+import customtkinter as ctk
+
+class ListaSenasWindow(ctk.CTkFrame):
+    def __init__(self, parent, controller):
+        super().__init__(parent)
+        self.controller = controller
+        self.bg_color = "#AEEEEE"
+
+        self.configure(fg_color=self.bg_color)
         
-        # Configurar comportamiento al cerrar
-        self.protocol("WM_DELETE_WINDOW", self.cerrar_ventana)
-        
-        # Estilos
         self.bg_color = "#AEEEEE"
         self.button_style = {
             'font': ('Helvetica', 12),
@@ -24,7 +22,6 @@ class ListaSenasWindow(tk.Toplevel):
             'padx': 10,
             'pady': 5
         }
-        
         self.setup_ui()
     
     def setup_ui(self):
@@ -132,12 +129,9 @@ class ListaSenasWindow(tk.Toplevel):
     def mostrar_abecedario(self):
         # Aquí implementarías la lógica para cambiar a vista de abecedario
         print(f"Mostrando palabras de: abecedario")
-        self.withdraw()  # Oculta la ventana principal
-        from abecedario import SenhaWindow
-        # Ejemplo: mostrar la seña con ID 1
+        from pages.abecedario import SenhaWindow
         SenhaWindow(self)
         
     
     def cerrar_ventana(self):
-        self.destroy()
-        self.master.deiconify()  # Mostrar nuevamente la ventana principal
+        self.controller.show_frame("Menu")
