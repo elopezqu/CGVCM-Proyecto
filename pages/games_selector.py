@@ -1,6 +1,7 @@
 import customtkinter as ctk
 from PIL import Image, ImageTk
 import os
+import subprocess
 
 class GameSelectionPage(ctk.CTkFrame):
     def __init__(self, parent, controller):
@@ -84,4 +85,8 @@ class GameSelectionPage(ctk.CTkFrame):
             btn.pack(pady=(0, 10), fill="x", padx=10)
 
     def jugar(self, nombre_juego):
-        print(f"Iniciar {nombre_juego}")
+        if nombre_juego == "Ahorcado":
+
+            subprocess.Popen(["python", "./pages/Games/ahorcado.py"])  # Ruta según esté el script
+        else:
+            print(f"Iniciar {nombre_juego}")
